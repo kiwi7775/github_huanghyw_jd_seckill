@@ -325,8 +325,8 @@ class JdTdudfp:
             await page.goto(a_href)
             await page.waitFor(".goods_item_link")
             logger.info("page_title：【%s】, page_url：【%s】" % (await page.title(), page.url))
-            a_href = await page.querySelectorAllEval(".goods_item_link", "(elements) => elements[{}].href".format(str(random.randint(1,20))))
-            await page.goto(a_href)
+            # a_href = await page.querySelectorAllEval(".goods_item_link", "(elements) => elements[{}].href".format(str(random.randint(1,20))))
+            # await page.goto(a_href)
             await page.waitFor("#InitCartUrl")
             logger.info("page_title：【%s】, page_url：【%s】" % (await page.title(), page.url))
             a_href = await page.querySelectorAllEval("#InitCartUrl", "(elements) => elements[0].href")
@@ -404,8 +404,8 @@ class JdSeckill(object):
             if not self.qrlogin.is_login:
                 logger.info("{0} 需登陆后调用，开始扫码登陆".format(func.__name__))
                 self.login_by_qrcode()
-            if not self.jd_tdufp.is_init:
-                self.jd_tdufp.init_jd_tdudfp()
+            # if not self.jd_tdufp.is_init:
+            #     self.jd_tdufp.init_jd_tdudfp()
             return func(self, *args, **kwargs)
         return new_func
 
